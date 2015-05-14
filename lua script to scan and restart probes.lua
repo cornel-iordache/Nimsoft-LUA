@@ -4,7 +4,7 @@
 
 --This script suppose to be a .bat  :)
 -- yes,yes,yes you heard well .bat in CA UIM :D
--- request for create a .bat has come for our architect .. not, not buildings architect ...IT one :D ..scripter too
+-- request for create a .bat has come for our architect .. not, not buildings architect ...IT one :D 
 -- resuscitate dead probes.
 --
 -- call the _status method on a list of probes. If one fails to reply
