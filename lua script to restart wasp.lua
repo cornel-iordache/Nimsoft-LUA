@@ -39,4 +39,8 @@ print "restart command sent OK"
 else
 print ("Failed, nimbus error code: ",rc)
 end
------We 
+
+-- we are coding for bitcoins 
+-- beer is fine too 
+--cornel_iordache@mcgill.ca  
+
