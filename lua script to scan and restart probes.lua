@@ -1,17 +1,16 @@
 --This script runs from a schedule on the nas and will test a number of local probes 
---sending a probe_activate to any that are dead. It does this a max of once per half hour per probe. 
---It sends an alarm of escalating severity on every subsequent event for the same probe.
+--sending a probe_activate to any that are dead. 
+--It sends an alarm on every subsequent event for the same probe.
 
--- aed (Automatic Electronic Defibrillator)
 --This script suppose to be a .bat  :)
 -- yes,yes,yes you heard well .bat in CA UIM :D
 -- request for create a .bat has come for our architect .. not, not buildings architect ...IT one :D ..scripter too
 -- resuscitate dead probes.
 --
 -- call the _status method on a list of probes. If one fails to reply
--- then invoke probe_activate on the controller against the dead probe.
+-- then invoke probe_activate on the controller to  the dead probe.
 --
--- This will happen a (configurable)  max of every half hour, not more because
+-- This will happen a (can be changed)  max of every half hour, not more because
 -- there may be a good reason why the probe is dead
 
 -- delay is how long (seconds) we wait before we try to restart it again
@@ -19,7 +18,7 @@
 delay       = (30 * 60)
 
 -- this is a list of probes to check, httpd makes a nice test case
-resuscitate = {"e2e", "cdm", "controler", "dap", "nis", "nas, "data_engine", "sqlserver"}
+resuscitate = {"e2e", "_atrium_exchange", "cdm", "controler", "dap", "nis", "nas, "data_engine", "sqlserver"}
 
 controller = nimbus.request("controller","get_info")
 print ("Robotname: ",controller.robotname)
@@ -44,9 +43,9 @@ for _,probe in pairs (resuscitate) do
          else
             print ("Failed, nimbus error code: ",rc)
          end
-         -- store a variable when we may next kick it
+         -- store a variable for next kick 
          setvariable("nextkick_"..probe, (timestamp.now()+delay) )
-         -- see how frequently we are kicking it and send an appropriate level alarm
+         -- see how frequently we are kicking it and send an severity level alarm
          kicked = getvariable("status_"..probe)
          if kicked == nil then
             kicked = 0
@@ -63,3 +62,6 @@ for _,probe in pairs (resuscitate) do
       setvariable("status_"..probe, 0)
    end
 end
+-- we are coding for bitcoins
+-- beer is fine too
+--cornel_iordache@mcgill.ca 
