@@ -1,8 +1,8 @@
 -- script:      removeOldQosData
 -- purpose:     this script will delete all qos-data-sources and their data which have not delivered qos-values in a specified time
 -- author:      chris.luekermann@nimsoft.com
--- date:        2010/05/13
--- (c) 2010 Nimsoft
+-- date:        2014/05/13
+-- (c) 2014 Nimsoft
 iDays = 7   -- delete qos-sources which did not deliver values in the past X days. Only specify FULL days here
 sDatabaseType = "sqlserver" -- specify the database type you're using. Valid values: sqlserver | mysql
 -- if you have oracle, write me a e-mail
